@@ -5,35 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Día de las Flores Amarillas 🌻</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #FFFACD;
-            color: #4B0082;
+        :root {
+            --main-bg: #FFFACD;
+            --header-bg: #FFD700;
+            --main-text: #4B0082;
+            --header-text: #8B0000;
+            --button-bg: #FFD700;
+            --button-text: #8B0000;
+            --content-bg: rgba(255, 255, 255, 0.85);
+            --content-shadow: 0 6px 10px rgba(0, 0, 0, 0.12);
+            --border-radius: 15px;
+        }
+
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background: var(--main-bg);
+            color: var(--main-text);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
             text-align: center;
+            position: relative;
             overflow: hidden;
         }
 
         header {
-            background-color: #FFD700;
-            width: 100%;
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
+            background: var(--header-bg);
+            width: 100vw;
+            padding: 24px 0 18px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.09);
             z-index: 10;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #8B0000;
-        }
 
         main {
             padding: 20px;
