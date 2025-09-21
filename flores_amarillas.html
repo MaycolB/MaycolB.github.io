@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de las Flores Amarillas 🌻</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFFACD;
+            color: #4B0082;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #FFD700;
+            width: 100%;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #8B0000;
+        }
+
+        main {
+            padding: 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        button {
+            background-color: #FFD700;
+            color: #8B0000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 2em;
+            animation: fall linear infinite;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Estilos para el ramo de girasoles */
+        .sunflower-bouquet {
+            position: absolute;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 6em;
+            opacity: 0;
+            animation: growUp 3s ease-out forwards;
+            animation-delay: 1s;
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        @keyframes growUp {
+            0% {
+                bottom: -200px;
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                bottom: 20px;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💐 ¡Feliz Día de las Flores Amarillas! 💐</h1>
+    </header>
+
+    <main>
+        <div class="content">
+            <p>
+                Hoy, 21 de septiembre, es un día especial para regalar flores amarillas y simbolizar el amor, la amistad y los nuevos comienzos.
+            </p>
+            <button id="flowerButton">Haz clic y recibe una flor virtual</button>
+        </div>
+    </main>
+
+    <div class="flower-container" id="flowerContainer"></div>
+    
+    <div class="sunflower-bouquet" id="sunflowerBouquet">
+        🌻🌻🌻
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('flowerButton');
+            const container = document.getElementById('flowerContainer');
+            const flowerEmojis = ['🌼', '🌻', '💛', '🌟', '✨'];
+
+            button.addEventListener('click', () => {
+                for (let i = 0; i < 50; i++) {
+                    createFallingFlower();
+                }
+            });
+
+            function createFallingFlower() {
+                const flower = document.createElement('div');
+                flower.classList.add('flower');
+                flower.innerHTML = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                
+                flower.style.left = `${Math.random() * 100}vw`;
+                
+                const duration = Math.random() * 5 + 5;
+                const delay = Math.random() * 2;
+                
+                flower.style.animationDuration = `${duration}s`;
+                flower.style.animationDelay = `${delay}s`;
+
+                container.appendChild(flower);
+
+                flower.addEventListener('animationend', () => {
+                    flower.remove();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
